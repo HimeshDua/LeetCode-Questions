@@ -3,28 +3,38 @@
  * @return {number}
  */
 function possibleStringCount(word) {
-  let possiblities = [];
-  let charArr = [...word].reduce((storedVal, currentValue) => {
-    storedVal[currentValue] = (storedVal[currentValue] || 0) + 1;
-    return storedVal;
-  }, {});
+  let str = [];
+  let res = 1;
 
-  for (const key in charArr) {
-    let temp = {...charArr};
-    while (temp[key] > 1) {
-      temp[key]--;
-      possiblities.push({...temp});
-    }
-    console.log('pushed:', JSON.stringify(temp));
+  for (const c of word) {
+    str.at(-1) === c ? res++ : str.push(c);
   }
-
-  // if (charArr[key] > 1) {
-  //   const temp = {...charArr};
-  //   temp[key] = temp[key] - 1;
-  //   possiblities.push(temp);
-  // }
-  console.log(possiblities);
+  console.log(res);
 }
+// function possibleStringCount(word) {
+//   let possiblities = [];
+//   let charArr = [...word].reduce((storedVal, currentValue) => {
+//     storedVal[currentValue] = (storedVal[currentValue] || 0) + 1;
+//     return storedVal;
+//   }, {});
+
+//   for (const key in charArr) {
+//     let temp = {...charArr};
+//     while (temp[key] > 1) {
+//       temp[key]--;
+//       possiblities.push({...temp});
+//     }
+//     console.log('pushed:', JSON.stringify(temp));
+//     // console.log('pushed:', JSON.stringify(temp));
+//   }
+
+// if (charArr[key] > 1) {
+//   const temp = {...charArr};
+//   temp[key] = temp[key] - 1;
+//   possiblities.push(temp);
+// }
+// console.log(possiblities);
+// }
 
 // reduce method summary
 // 'a','b','b','c' reduce loops on without mutating actual array
